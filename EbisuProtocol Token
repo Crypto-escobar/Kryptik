@@ -3,8 +3,8 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/tokens/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/tokens/ERC20/extensions/IERC20Metadata.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
 
 contract ERC20 is Context, IERC20, IERC20Metadata {
@@ -23,11 +23,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     }
 
     function name() public view virtual override returns (string memory) {
-        return 'EbisuProtocol';
+        return _name;
     }
 
     function symbol() public view virtual override returns (string memory) {
-        return 'EBISU';
+        return _symbol;
     }
 
     function decimals() public view virtual override returns (uint8) {
@@ -35,7 +35,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     }
 
     function totalSupply() public view virtual override returns (uint256) {
-        return '833333333';
+        return _totalSupply;
     }
 
     function balanceOf(address account) public view virtual override returns (uint256) {
