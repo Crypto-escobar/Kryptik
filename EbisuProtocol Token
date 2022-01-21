@@ -6,11 +6,8 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
-import "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetFixedSupply.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 
-contract ERC20 is Context, IERC20, IERC20Metadata, ERC20PresetFixedSupply, ERC20Burnable, ERC20Capped {
+contract TESTERER is Context, IERC20, IERC20Metadata {
     mapping(address => uint256) private _balances;
 
     mapping(address => mapping(address => uint256)) private _allowances;
@@ -23,6 +20,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, ERC20PresetFixedSupply, ERC20
     constructor(string memory name_, string memory symbol_) {
         _name = 'Ebisu Protocol';
         _symbol = '18';
+        _mint(msg.sender, 1000 * 10 ** 18);
     }
 
     function name() public view virtual override returns (string memory) {
@@ -115,7 +113,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata, ERC20PresetFixedSupply, ERC20
     }
 
     function _mint(address account, uint256 amount) internal virtual {
-        require(account != address(0), "ERC20: mint to the zero address");
+        require(account != address(0), "msg.sender");
 
         _beforeTokenTransfer(address(0), account, amount);
 
